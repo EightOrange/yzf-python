@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频目录</title>
+    <style type="text/css">
+    	body{
+    		font-size: 22px;
+    	}
+    	#main img{
+    		width: 100%;
+    		position: absolute;
+    		z-index: 1;
+    	}
+    	#header{
+    		z-index: 2;
+    		position: relative;
+    		height: 70px;
+    		background-color: cornsilk;
+    		opacity: 0.7;
+    		
+    	}
+    	#header h2{
+ 			text-align: center;
+    		line-height: 70px;
+    		display: inline;
+  
+    	}
+    	#quit{
+    		width: 70px;
+    		line-height: 70px;
+    		text-align: center;
+    		font-size: 22px;
+    		float: right;
+    		margin: 0 10px;
+    	}
+    	#quit a{
+    		text-decoration: none;
+    		color: #000000;
+    	}
+    	#contanier{
+    		z-index: 2;
+    		position: relative;
+    		width: 520px;
+    		height: 700px;
+    		margin: 0 auto;
+    	}
+    	#contanier .td{
+    		width: 540px;
+    		height: 35px;
+    		background-color: cornsilk;
+    	}
+    </style>
+</head>
+
+<body>
+	<div id="main">
+		<img src="{{ url_for('static', path='/img/bc2.jpg') }}" />
+		<div id="header">
+			<h2>欢迎！{{username}}！</h2>
+			<div id="quit">
+				<a href="index.html">退出</a>
+			</div>
+		</div>
+	    <div id="contanier">
+	    	<h3>这里是视频演示目录！</h3>
+	    	 <br />
+	    	<div class="td">
+	    		{{vedio_list[0]}}
+	    	</div>
+		    
+		    <video src="/vedio/{{vedio_list[0]}}" width="540" height="380" controls="controls">
+		        您的浏览器不支持 video 标签。
+		    </video>
+		   <br />
+		    <br />
+		   <div class="td">
+	    		{{vedio_list[1]}}
+	    	</div>
+		    
+		    <video src="/vedio/{{vedio_list[1]}}" width="540" height="380" controls="controls">
+		        您的浏览器不支持 video 标签。
+		    </video>
+		
+		    <br>
+		    <h3>这里为上传文件演示</h3>
+		    <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+		        <input name="files" type="file" multiple>
+		        <input type="submit">
+		        <input type="hidden" name="username" value="{{username}}">
+		    </form>
+		    <h3>如果上传成功，这里会有上传文件的文件名：</h3>
+		    {{filenames}}
+	    </div>
+	   
+	</div>
+	
+
+</body>
+
+</html>

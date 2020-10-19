@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>登录界面</title>
+	<style type="text/css">
+		.container {
+			width: 1000px;
+			height: 400px;
+			margin: 50px auto;
+			position: relative;
+		}
+
+		.container img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 1;
+		}
+
+		.text {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			z-index: 2;
+			padding-top: 150px;
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<img src="{{ url_for('static', path='/img/background.jpg') }}" />
+		<div class="text">
+			<form action="/yuzhuofan/login" enctype="application/x-www-form-urlencoded" method="POST">
+				<label>用户名</label>
+				<br>
+				<input name="username" type="username">
+				<br>
+				<label>密码</label>
+				<br>
+				<input name="password" type="password">
+				<br><br>
+				<input type="submit" style="margin-left: 66px;">
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
